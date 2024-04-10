@@ -1,0 +1,12 @@
+services:  
+  aasx-server:  
+    container_name: aasx-server  
+    image: docker.io/adminshellio/aasx-server-blazor-for-demo:main  
+    restart: unless-stopped  
+    ports:  
+      - 5001:5001  
+    environment:  
+      - Kestrel__Endpoints__Http__Url=http://*:5001  
+    volumes:  
+      - ./aasxs:/usr/share/aasxs  
+    command: --no-security --data-path /usr/share/aasxs --external-blazor http://localhost  
