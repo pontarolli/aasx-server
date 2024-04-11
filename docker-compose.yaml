@@ -1,7 +1,7 @@
 services:  
   aasx-server:  
     container_name: aasx-server  
-    image: docker.io/adminshellio/aasx-server-blazor-for-demo:main  
+    image: docker.io/adminshellio/aasx-server-blazor-for-demo-arm64:main
     restart: unless-stopped  
     ports:  
       - 5001:5001  
