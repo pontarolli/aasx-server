@@ -462,3 +462,6 @@ Servidor aasx-blazor para hospedar todos os ativos da planta.
 
 ## Docker
 docker compose up
+
+http://localhost:5001/
+http://192.168.137.53:5001/
