@@ -465,3 +465,15 @@ docker compose up
 
 http://localhost:5001/
 http://192.168.137.53:5001/
+
+
+aasx-server
+------------------------------------------
+Acesso remoto (internet)
+http://186.217.146.208:5101/
+
+Acesso local (rede iotgasi)
+http://192.168.1.100:5001/
+
+Acesso internamente na raspberrypi (192.168.1.100)
+http://localhost:5001/
