@@ -4,7 +4,7 @@
 > All links to the previous repository location are automatically redirected to the new location, e.g. when using `git clone`, `git push` etc.
 > It is, however, recommended to update the `origin` of any clones to avoid confusion.
 
-# AASX Server 
+# AASX Server  
 ![Check-release-workflow](
 https://github.com/admin-shell-io/aasx-server/workflows/Check-release-workflow/badge.svg
 ) ![Check-style-workflow](
@@ -371,43 +371,43 @@ Please find a short description of the REST API below.
 
 ### Asset Administration Shell Repository Interface
 
-Cmd | String | Example
-------- | ------ | -------
-GET | /server/profile | <http://localhost:51310/server/profile>
-GET | /server/listaas | <http://localhost:51310/server/listaas>
+| Cmd | String          | Example                                 |
+| --- | --------------- | --------------------------------------- |
+| GET | /server/profile | <http://localhost:51310/server/profile> |
+| GET | /server/listaas | <http://localhost:51310/server/listaas> |
 
 ### Asset Administration Shell Interface
 
-Cmd | String | Example
-------- | ------ | -------
-GET | /aas/{aas-identifier}  <br />  /aas/{aas-identifier}/core  <br />  /aas/{aas-identifier}/complete  <br />  /aas/{aas-identifier}/thumbnail  <br />  /aas/{aas-identifier}/aasenv   | <http://localhost:51310/aas/ExampleMotor>  <br />  <http://localhost:51310/aas/ExampleMotor/core>  <br />  <http://localhost:51310/aas/ExampleMotor/complete>  <br />  <http://localhost:51310/aas/ExampleMotor/thumbnail>  <br />  <http://localhost:51310/aas/ExampleMotor/aasenv>
+| Cmd | String                                                                                                                                                                           | Example                                                                                                                                                                                                                                                                              |
+| --- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| GET | /aas/{aas-identifier}  <br />  /aas/{aas-identifier}/core  <br />  /aas/{aas-identifier}/complete  <br />  /aas/{aas-identifier}/thumbnail  <br />  /aas/{aas-identifier}/aasenv | <http://localhost:51310/aas/ExampleMotor>  <br />  <http://localhost:51310/aas/ExampleMotor/core>  <br />  <http://localhost:51310/aas/ExampleMotor/complete>  <br />  <http://localhost:51310/aas/ExampleMotor/thumbnail>  <br />  <http://localhost:51310/aas/ExampleMotor/aasenv> |
 
 
 ### Submodel Interface
 
-Cmd | String
-------- | ------
-GET | /aas/{aas-identifier}/submodels/\{submodel-identifier} <br /> /aas/{aas-identifier}/submodels/\{submodel-identifier}/core <br /> /aas/{aas-identifier}/submodels/\{submodel-identifier}/deep <br /> /aas/{aas-identifier}/submodels/\{submodel-identifier}/complete <br /> /aas/{aas-identifier}/submodels/\{submodel-identifier}/table
+| Cmd | String                                                                                                                                                                                                                                                                                                                                  |
+| --- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| GET | /aas/{aas-identifier}/submodels/\{submodel-identifier} <br /> /aas/{aas-identifier}/submodels/\{submodel-identifier}/core <br /> /aas/{aas-identifier}/submodels/\{submodel-identifier}/deep <br /> /aas/{aas-identifier}/submodels/\{submodel-identifier}/complete <br /> /aas/{aas-identifier}/submodels/\{submodel-identifier}/table |
 
 > *Example:* <http://localhost:51310/aas/ExampleMotor/submodels/Documentation/complete>
 
 
 ### Submodel Element Interface
 
-Cmd | String
-------- | ------
-GET | /aas/{aas-identifier}/submodels/{submodel-identifier}/elements/{se-identifier} <br /> /aas/{aas-identifier}/submodels/{submodel-identifier}/elements/{se-identifier}/core <br /> /aas/{aas-identifier}/submodels/{submodel-identifier}/elements/{se-identifier}/complete <br /> /aas/{aas-identifier}/submodels/{submodel-identifier}/elements/{se-identifier}/deep <br /> /aas/{aas-identifier}/submodels/{submodel-identifier}/elements/{se-identifier}/value <br/>
-PUT | /aas/{aas-identifier}/submodels/{submodel-identifier}/elements/ *+ Payload* <br />  *Payload = content of "elem"-part of a SubmodelElement (see example below)*
-DELETE |  /aas/{aas-identifier}/submodels/{submodel-identifier}/elements/{se-identifier} | <http://localhost:51310/aas/ExampleMotor/submodels/OperationalData/elements/RotationSpeed>
+| Cmd    | String                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| GET    | /aas/{aas-identifier}/submodels/{submodel-identifier}/elements/{se-identifier} <br /> /aas/{aas-identifier}/submodels/{submodel-identifier}/elements/{se-identifier}/core <br /> /aas/{aas-identifier}/submodels/{submodel-identifier}/elements/{se-identifier}/complete <br /> /aas/{aas-identifier}/submodels/{submodel-identifier}/elements/{se-identifier}/deep <br /> /aas/{aas-identifier}/submodels/{submodel-identifier}/elements/{se-identifier}/value <br/> |
+| PUT    | /aas/{aas-identifier}/submodels/{submodel-identifier}/elements/ *+ Payload* <br />  *Payload = content of "elem"-part of a SubmodelElement (see example below)*                                                                                                                                                                                                                                                                                                       |
+| DELETE | /aas/{aas-identifier}/submodels/{submodel-identifier}/elements/{se-identifier}                                                                                                                                                                                                                                                                                                                                                                                        | <http://localhost:51310/aas/ExampleMotor/submodels/OperationalData/elements/RotationSpeed> |
 
 > *Example:* <http://localhost:51310/aas/ExampleMotor/submodels/OperationalData/elements/RotationSpeed/complete>
 
 ### Submodel Element Collection Interface
-Cmd | String
-------- | ------
-GET | /aas/{aas-identifier}/submodels/{submodel-identifier}/elements/{sec-identifier}/{se-identifier} <br /> /aas/{aas-identifier}/submodels/{submodel-identifier}/elements/{sec-identifier}/{se-identifier}/core <br /> /aas/{aas-identifier}/submodels/{submodel-identifier}/elements/{sec-identifier}/{se-identifier}/complete <br /> /aas/{aas-identifier}/submodels/{submodel-identifier}/elements/{sec-identifier}/{se-identifier}/deep <br /> /aas/{aas-identifier}/submodels/{submodel-identifier}/elements/{sec-identifier}/{se-identifier}/value
-PUT |     /aas/{aas-identifier}/submodels/{submodel-identifier}/elements/{sec-identifier} *+ Payload* <br /> *Payload = content of "elem"-part of a SubmodelElement (see example below)*
-DELETE |  /aas/{aas-identifier}/submodels/{submodel-identifier}/elements/{sec-identifier}/{se-identifier}
+| Cmd    | String                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| GET    | /aas/{aas-identifier}/submodels/{submodel-identifier}/elements/{sec-identifier}/{se-identifier} <br /> /aas/{aas-identifier}/submodels/{submodel-identifier}/elements/{sec-identifier}/{se-identifier}/core <br /> /aas/{aas-identifier}/submodels/{submodel-identifier}/elements/{sec-identifier}/{se-identifier}/complete <br /> /aas/{aas-identifier}/submodels/{submodel-identifier}/elements/{sec-identifier}/{se-identifier}/deep <br /> /aas/{aas-identifier}/submodels/{submodel-identifier}/elements/{sec-identifier}/{se-identifier}/value |
+| PUT    | /aas/{aas-identifier}/submodels/{submodel-identifier}/elements/{sec-identifier} *+ Payload* <br /> *Payload = content of "elem"-part of a SubmodelElement (see example below)*                                                                                                                                                                                                                                                                                                                                                                       |
+| DELETE | /aas/{aas-identifier}/submodels/{submodel-identifier}/elements/{sec-identifier}/{se-identifier}                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 
 > *Example:* <http://localhost:51310/aas/ExampleMotor/submodels/Documentation/elements/OperatingManual/DocumentId/complete>
 
