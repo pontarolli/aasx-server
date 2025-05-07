@@ -1,14 +1,75 @@
 services:
   aasx-server:
     container_name: aasx-server
-    image: docker.io/adminshellio/aasx-server-blazor-for-demo-arm32:main
+    # image: docker.io/adminshellio/aasx-server-blazor-for-demo-arm32:main
+    image: docker.io/adminshellio/aasx-server-blazor-for-demo-arm32:latest
     restart: always
     ports:
       - 5001:5001
+      - 51310:51310
+      - 51210:51210
     environment:
       - Kestrel__Endpoints__Http__Url=http://*:5001
     volumes:
       - ./aasxs:/AasxServerBlazor/aasxs
     tmpfs:
       - /tmp:size=1G
-    command: --no-security --data-path /AasxServerBlazor/aasxs --external-blazor http://localhost
+    # command: --no-security --data-path /AasxServerBlazor/aasxs --external-blazor http://localhost
+    # command: --no-security --opc --opc-client-rate 1000 --mqtt --edit --data-path /AasxServerBlazor/aasxs --external-blazor http://localhost
+
+    entrypoint: ["dotnet", "AasxServerBlazor.dll"]
+    command:
+      - --no-security
+      - --rest
+      # - --opc
+      # - --opc-client-rate
+      # - "1000"
+      # - --mqtt
+      - --edit
+      - --data-path
+      - /AasxServerBlazor/aasxs
+      - --external-blazor
+      - http://0.0.0.0
+      - --host
+      - 0.0.0.0
+      # - --help
+
+
+
+#       aasx-server  | args:
+# aasx-server  | --no-security
+# aasx-server  | --data-path
+# aasx-server  | ./aasxs
+# aasx-server  | --host
+# aasx-server  | 0.0.0.0
+
+# dotnet AasxServerBlazor.dll --rest --mqtt --opc --no-security --data-path ./aasxs --host 0.0.0.0
+
+# aasx-server  | Options:
+# aasx-server  |   --host <host>                              Host which the server listens on [default: localhost]
+# aasx-server  |   --data-path <data-path>                    Path to where the AASXs reside
+# aasx-server  |   --opc                                      If set, starts the OPC server
+# aasx-server  |   --mqtt                                     If set, starts a MQTT publisher
+# aasx-server  |   --debug-wait                               If set, waits for Debugger to attach
+# aasx-server  |   --opc-client-rate <opc-client-rate>        If set, starts an OPC client and refreshes on the given period (in milliseconds)
+# aasx-server  |   --proxy-file <proxy-file>                  If set, parses the proxy information from the given proxy file
+# aasx-server  |   --no-security                              If set, no authentication is required
+# aasx-server  |   --edit                                     If set, allows edits in the user interface
+# aasx-server  |   --name <name>                              Name of the server
+# aasx-server  |   --external-blazor <external-blazor>        external name of the server blazor UI
+# aasx-server  |   --read-temp                                If set, reads existing AASX from temp at startup
+# aasx-server  |   --save-temp <save-temp>                    If set, writes AASX every given seconds
+# aasx-server  |   --secret-string-api <secret-string-api>    If set, allows UPDATE access by query parameter s=
+# aasx-server  |   --html-id                                  If set, creates id for HTML objects in blazor tree for testing
+# aasx-server  |   --tag <tag>                                Only used to differ servers in task list
+# aasx-server  |   --aasx-in-memory <aasx-in-memory>          If set, size of array of AASX files in memory
+# aasx-server  |   --with-db                                  If set, will use DB by Entity Framework
+# aasx-server  |   --no-db-files                              If set, do not export files from AASX into ZIP
+# aasx-server  |   --start-index <start-index>                If set, start index in list of AASX files
+# aasx-server  |   --version                                  Show version information
+# aasx-server  |   -?, -h, --help                             Show help and usage information
+
+
+
+
+
